@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body class="container">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <%if (locals.error) { %>
+    <div class="alert alert-danger">
+      <strong>Error!</strong> <%= locals.error %>
+    </div>
+    <% } %>
+    <div class="form-group">
+      <form action="/libro/<%= libro._id%>" method="POST">
+        <label>Libro</label>
+        <input type="text" name="title" class="form-control" placeholder="Titulo" value="<%= libro.title %>">
+        <input type="text" name="author" class="form-control" placeholder="Autor" value="<%= libro.author %>">
+        <input type="number" name="pages" class="form-control" placeholder="Páginas" value="<%= libro.pages %>">
+        <input type="number" name="price" class="form-control" placeholder="Precio" value="<%= libro.price %>">
+        <input type="submit" name="" value="Editar" class="btn btn-primary">
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <% include ../partials/head %>
+</head>
+<body class="container">
+  <% include ../partials/header %>
+  <%if (locals.libro) { %>
+      <div class="alert alert-error">
+          <strong>Creado!</strong> <%= locals.libro %>
+      </div>
+  <% } %>
+    <div class="form-group col-md-6">
+        <form action="/libro" method="POST">
+            <label>Libro</label>
+            <input type="text" name="title" class="form-control" placeholder="Titulo">
+            <input type="text" name="author" class="form-control" placeholder="Autor">
+            <input type="number" name="pages" class="form-control" placeholder="Páginas">
+            <input type="number" name="price" class="form-control" placeholder="Precio">
+            <br>
+            <input type="submit" name="" value="Enviar" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>

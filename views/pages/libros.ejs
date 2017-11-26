@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body class="container">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <a href="/crear_libro" class="btn btn-info">Crear nuevo</a>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>#</th>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Páginas</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%if (locals.error) { %>
+        <div class="alert alert-danger">
+          <strong>Error!</strong> <%= locals.error %>
+        </div>
+        <% } %>
+        <% cont  = 1; %>
+        <% locals.libros.forEach((libro) =>{ %>
+          <tr>
+            <th scope="row" class="col-md-2">
+              <%= cont %>
+            </th>
+            <td class="col-md-3">
+              <%= libro.title; %>
+            </td>
+            <td class="col-md-3">
+              <%= libro.author; %>
+            </td>
+            <td class="col-md-2">
+              <%= libro.pages; %>
+            </td>
+            <td class="col-md-2">
+              <%= libro.price; %>
+            </td>
+            <td class="col-md-2">
+              <a href="/libro/<%= libro._id %>" class="btn btn-primary btn-sm">Editar</a>
+              <a href="/libro/delete/<%= libro._id %>" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+          </tr>
+          <% cont++; }); %>
+        </tbody>
+      </table>
+    </body>
+</html>
